@@ -1,20 +1,26 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import _omit from 'lodash/omit'
+import React from 'react'
+import withTWzipcode from '../withTWzipcode'
 
-import data from './data.json'
+import TWzipcodeCity from './TWzipcodeCity'
+import TWzipcodeDist from './TWzipcodeDist'
 
-export default class TWzipcode extends Component {
-  static propTypes = {
-    select: PropTypes.node,
-    defaultCity: PropTypes.string,
-    defaultDist: PropTypes.string,
-  }
+const TWzipcode = ({
+  cities, dists, selectedCity, selectedDist, handleOnCityChange, handleOnDistChange, ...rest
+}) => (
+  <React.Fragment>
+    <TWzipcodeCity
+      cities={cities}
+      selectedCity={selectedCity}
+      handleOnCityChange={handleOnCityChange}
+      {...rest}
+    />
+    <TWzipcodeDist
+      dists={dists}
+      selectedDist={selectedDist}
+      handleOnDistChange={handleOnDistChange}
+      {...rest}
+    />
+  </React.Fragment>)
 
-  render() {
-    const passThroughProps = _omit(this.props, ['onClick'])
-    return (
-      children
-    )
-  }
-}
+
+export default withTWzipcode()(TWzipcode)

@@ -6,10 +6,10 @@ import {
 /* eslint import/no-extraneous-dependencies: "off" */
 import { hot } from 'react-hot-loader'
 
-import Dashboard from './Dashboard'
+import Home from './Home'
 
 export default hot(module)(() => (
   <BrowserRouter>
-    <Dashboard />
+    <Home />
   </BrowserRouter>
 ));
