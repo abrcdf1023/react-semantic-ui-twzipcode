@@ -1,7 +1,7 @@
 import _map from 'lodash/map'
 import React from 'react'
-import { Dropdown, Input } from 'semantic-ui-react'
-import { withSimpleAddress } from 'react-simple-address'
+import {Form, Dropdown, Input } from 'semantic-ui-react'
+import withSimpleAddress from 'react-simple-address'
 
 const MySimpleAddres = ({
   selectedCity,
@@ -12,10 +12,9 @@ const MySimpleAddres = ({
   handleOnCityChange,
   handleOnDistChange,
   handleOnPostalCodeChange,
-  ...rest
 }) => {
   return (
-    <React.Fragment>
+    <Form>
       <Dropdown
         selection
         onChange={(e, { value }) => { handleOnCityChange(value) }}
@@ -26,9 +25,7 @@ const MySimpleAddres = ({
           text: city,
           value: city,
         }))}
-        {...rest}
       />
-      <br />
       <Dropdown
         selection
         onChange={(e, { value }) => { handleOnDistChange(value) }}
@@ -39,11 +36,10 @@ const MySimpleAddres = ({
           text: dist.name,
           value: dist.name,
         }))}
-        {...rest}
       />
       <Input value={selectedPostalCode} onChange={(e, { value }) => { handleOnPostalCodeChange(value) }}/>
-    </React.Fragment>
+    </Form>
   )
 }
 
-export default withSimpleAddress(MySimpleAddres)
+export default withSimpleAddress()(MySimpleAddres)

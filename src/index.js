@@ -1,2 +1,1 @@
-export SimpleAddress from './SimpleAddress'
-export withSimpleAddress from './withSimpleAddress'
+export default from './withSimpleAddress'
