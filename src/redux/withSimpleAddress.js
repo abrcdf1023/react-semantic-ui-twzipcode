@@ -4,7 +4,7 @@ import _merge from 'lodash/merge'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import data from './data'
+import data from '../data'
 import {
   findDists,
   findPostalCode,
@@ -18,32 +18,29 @@ export default function withSimpleAddress(cusConfigs) {
   return function wrapper(WrappedComponent) {
     return class SimpleAddress extends Component {
       static propTypes = {
-        defaultCity: PropTypes.string,
-        defaultDist: PropTypes.string,
-        defaultPostalCode: PropTypes.string,
+        selectedCity: PropTypes.string,
+        selectedDist: PropTypes.string,
+        selectedPostalCode: PropTypes.string,
+        changeCity: PropTypes.func.isRequired,
+        changeDist: PropTypes.func.isRequired,
+        changePostalCode: PropTypes.func.isRequired,
       }
 
       static defaultProps = {
-        defaultCity: '',
-        defaultDist: '',
-        defaultPostalCode: '',
+        selectedCity: '',
+        selectedDist: '',
+        selectedPostalCode: '',
       }
 
       constructor(props) {
         super(props)
-        if (props.defaultCity !== '') {
-          this.state.selectedCity = props.defaultCity
+        if (props.selectedDist !== '') {
+          this.state.dists = findDists(configs.data, props.selectedCity)
         }
-        if (props.defaultDist !== '') {
-          this.state.selectedDist = props.defaultDist
-          this.state.dists = findDists(configs.data, props.defaultCity)
+        if (props.selectedDist !== '' && props.selectedPostalCode === '') {
+          props.changePostalCode(findPostalCode(this.state.dists, props.selectedCity))
         }
-        if (props.defaultPostalCode !== '') {
-          this.state.selectedPostalCode = props.defaultPostalCode
-        } else {
-          this.state.selectedPostalCode = findPostalCode(this.state.dists, props.defaultDist)
-        }
-        if (props.defaultCity === '' && props.defaultDist !== '') {
+        if (props.selectedCity === '' && props.selectedDist !== '') {
           console.warn('WARN, There are too many dist in the same name. You should pass default city as well. ')
         }
       }
@@ -51,42 +48,31 @@ export default function withSimpleAddress(cusConfigs) {
       state = {
         cities: _map(configs.data, el => el.city),
         dists: [],
-        selectedCity: '',
-        selectedDist: '',
-        selectedPostalCode: '',
       }
 
       handleOnCityChange = (value) => {
+        this.props.changeCity(value)
+        this.props.changeDist('')
+        this.props.changePostalCode('')
         this.setState({
-          selectedCity: value,
-          selectedDist: '',
-          selectedPostalCode: '',
           dists: findDists(configs.data, value),
         })
       }
 
       handleOnDistChange = (value) => {
         const { dists } = this.state
-        this.setState({
-          selectedDist: value,
-          selectedPostalCode: findPostalCode(dists, value),
-        })
+        this.props.changeDist(value)
+        this.props.changePostalCode(findPostalCode(dists, value))
       }
 
-      handleOnPostalCodeChange = value => this.setState({ selectedPostalCode: value })
+      handleOnPostalCodeChange = value => this.props.changePostalCode(value)
 
       render() {
-        const {
-          cities, dists,
-          selectedCity, selectedDist, selectedPostalCode,
-        } = this.state
+        const { cities, dists } = this.state
         const passThroughProps = _omit(this.props, ['selectedCity', 'selectedDist', 'selectedPostalCode', 'cities', 'dists',
           'handleOnCityChange', 'handleOnDistChange', 'handleOnPostalCodeChange'])
         return (
           <WrappedComponent
-            selectedCity={selectedCity}
-            selectedDist={selectedDist}
-            selectedPostalCode={selectedPostalCode}
             cities={cities}
             dists={dists}
             handleOnCityChange={this.handleOnCityChange}
