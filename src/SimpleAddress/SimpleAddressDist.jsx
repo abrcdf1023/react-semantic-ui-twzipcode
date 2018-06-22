@@ -2,7 +2,7 @@ import _map from 'lodash/map'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TWzipcodeDist = ({
+const SimpleAddressDist = ({
   dists, selectedDist, handleOnDistChange, ...rest
 }) => (
   <select
@@ -17,7 +17,7 @@ const TWzipcodeDist = ({
   </select>
 )
 
-TWzipcodeDist.propTypes = {
+SimpleAddressDist.propTypes = {
   dists: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     zipcode: PropTypes.string.isRequired,
@@ -26,4 +26,4 @@ TWzipcodeDist.propTypes = {
   handleOnDistChange: PropTypes.func.isRequired,
 }
 
-export default TWzipcodeDist
+export default SimpleAddressDist

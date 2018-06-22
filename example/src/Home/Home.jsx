@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Header, Dropdown, Divider } from 'semantic-ui-react'
-import { TWzipcode } from 'react-twzipcode'
-import MyTWzipcode from './MyTWzipcode'
+import { SimpleAddress } from 'react-simple-address'
+import MySimpleAddres from './MySimpleAddres'
 
 import * as styles from './Home.scss'
 
@@ -9,29 +9,29 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
-        <Header as="h1">react-twzipcode</Header>
+        <Header as="h1">react-simple-address</Header>
         
         <Header as="h3">Basic</Header>
 
-        <TWzipcode />
+        <SimpleAddress />
         
         <Header as="h3">With default value</Header>
 
-        <TWzipcode defaultCity='臺北市'/>
+        <SimpleAddress defaultCity='臺北市'/>
         
-        <TWzipcode defaultCity='臺北市' defaultDist='中正區' />
+        <SimpleAddress defaultCity='臺北市' defaultDist='中正區' />
 
         <Header as="h3">Customer</Header>
 
-        <TWzipcode className={`ui selection dropdown ${styles.mb}`} />
+        <SimpleAddress className={`ui selection dropdown ${styles.mb}`} />
         <br />
-        <MyTWzipcode className={styles.mb} />
+        <MySimpleAddres className={styles.mb} />
         <br />
-        <MyTWzipcode className={styles.mb} />
+        <MySimpleAddres className={styles.mb} />
         <br />
-        <MyTWzipcode defaultCity='臺北市' className={styles.mb} />
+        <MySimpleAddres defaultCity='臺北市' className={styles.mb} />
         <br />
-        <MyTWzipcode defaultCity='臺北市' defaultDist='中正區' className={styles.mb} />
+        <MySimpleAddres defaultCity='臺北市' defaultDist='中正區' className={styles.mb} />
         
       </Container>
     )

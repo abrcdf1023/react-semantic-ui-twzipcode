@@ -1,2 +1,2 @@
-export TWzipcode from './TWzipcode'
-export withTWzipcode from './withTWzipcode'
+export SimpleAddress from './SimpleAddress'
+export withSimpleAddress from './withSimpleAddress'

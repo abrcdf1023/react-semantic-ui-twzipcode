@@ -1,10 +1,10 @@
 {
-  "name": "react-twzipcode",
+  "name": "react-simple-address",
   "version": "1.0.1",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abrcdf1023/react-twzipcode.git"
+    "url": "git+https://github.com/abrcdf1023/react-simple-address.git"
   },
   "author": "JerryP <egroup.jerrylee@gmail.com>",
   "license": "MIT",
@@ -30,11 +30,11 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "description": "react-twzipcode",
+  "description": "react-simple-address",
   "bugs": {
-    "url": "https://github.com/abrcdf1023/react-twzipcode/issues"
+    "url": "https://github.com/abrcdf1023/react-simple-address/issues"
   },
-  "homepage": "https://github.com/abrcdf1023/react-twzipcode#readme",
+  "homepage": "https://github.com/abrcdf1023/react-simple-address#readme",
   "directories": {
     "example": "example"
   }

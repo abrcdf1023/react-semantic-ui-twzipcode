@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 
 import data from './data'
 
-export default function withTWzipcode(WrappedComponent) {
-  return class TWzipcode extends Component {
+export default function withSimpleAddress(WrappedComponent) {
+  return class SimpleAddress extends Component {
     static propTypes = {
       defaultCity: PropTypes.string,
       defaultDist: PropTypes.string,

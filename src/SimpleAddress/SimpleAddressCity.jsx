@@ -2,7 +2,7 @@ import _map from 'lodash/map'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TWzipcodeCity = ({
+const SimpleAddressCity = ({
   cities, selectedCity, handleOnCityChange, ...rest
 }) => (
   <select
@@ -17,10 +17,10 @@ const TWzipcodeCity = ({
   </select>
 )
 
-TWzipcodeCity.propTypes = {
+SimpleAddressCity.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string.isRequired,
   handleOnCityChange: PropTypes.func.isRequired,
 }
 
-export default TWzipcodeCity
+export default SimpleAddressCity

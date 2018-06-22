@@ -1,9 +1,9 @@
 import _map from 'lodash/map'
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import { withTWzipcode } from 'react-twzipcode'
+import { withSimpleAddress } from 'react-simple-address'
 
-const MyTWzipcode = ({selectedCity, selectedDist, cities, dists, handleOnCityChange, handleOnDistChange, ...rest}) => {
+const MySimpleAddres = ({selectedCity, selectedDist, cities, dists, handleOnCityChange, handleOnDistChange, ...rest}) => {
   console.log(selectedDist)
   return (
     <React.Fragment>
@@ -36,4 +36,4 @@ const MyTWzipcode = ({selectedCity, selectedDist, cities, dists, handleOnCityCha
   )
 }
 
-export default withTWzipcode(MyTWzipcode)
+export default withSimpleAddress(MySimpleAddres)
