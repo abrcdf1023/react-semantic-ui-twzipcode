@@ -66,10 +66,9 @@ export default function withSimpleAddress(cusConfigs) {
       }
 
       handleOnDistChange = (value) => {
-        const { dists } = this.state
         this.setState({
           selectedDist: value,
-          selectedPostalCode: findPostalCode(dists, value),
+          selectedPostalCode: findPostalCode(this.state.dists, value),
         })
       }
 
