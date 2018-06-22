@@ -89,7 +89,7 @@ export default withSimpleAddress()(MySimpleAddres)
 Now you can import it anywhere.
 
 ```javascript
-<MySimpleAddres defaultCity='臺北市' defaultDist='中正區'/>
+<MySimpleAddres defaultCity='臺北市' defaultDist='中正區' defaultPostalCode='10000'/>
 ```
 
 ## configs

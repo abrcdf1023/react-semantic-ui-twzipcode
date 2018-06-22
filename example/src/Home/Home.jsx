@@ -12,12 +12,11 @@ export default class Home extends Component {
         <br />
         <MySimpleAddres/>
         <br />
-        <MySimpleAddres defaultDist='中正區'/>
-        <br />
         <MySimpleAddres defaultCity='臺北市'/>
         <br />
         <MySimpleAddres defaultCity='臺北市' defaultDist='中正區'/>
-        
+        <br />
+        <MySimpleAddres defaultCity='臺北市' defaultDist='中正區' defaultPostalCode='10000'/>
       </Container>
     )
   }

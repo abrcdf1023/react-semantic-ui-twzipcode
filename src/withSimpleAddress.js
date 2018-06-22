@@ -8,11 +8,13 @@ import PropTypes from 'prop-types'
 import data from './data'
 
 function findDists(source, value) {
+  if (!value) return []
   const { dists } = source[_findIndex(source, { city: value })]
   return dists
 }
 
 function findPostalCode(dists, value) {
+  if (dists.length === 0) return ''
   const { postalCode } = dists[_findIndex(dists, { name: value })]
   return postalCode
 }
@@ -27,23 +29,30 @@ export default function withSimpleAddress(cusConfigs) {
       static propTypes = {
         defaultCity: PropTypes.string,
         defaultDist: PropTypes.string,
+        defaultPostalCode: PropTypes.string,
       }
 
       static defaultProps = {
         defaultCity: '',
         defaultDist: '',
+        defaultPostalCode: '',
       }
 
       constructor(props) {
         super(props)
         if (props.defaultCity !== '') {
           this.state.selectedCity = props.defaultCity
-          if (props.defaultDist !== '') {
-            this.state.selectedDist = props.defaultDist
-            this.state.dists = findDists(configs.data, props.defaultCity)
-            this.state.selectedPostalCode = findPostalCode(this.state.dists, props.defaultDist)
-          }
-        } else if (props.defaultDist !== '') {
+        }
+        if (props.defaultDist !== '') {
+          this.state.selectedDist = props.defaultDist
+          this.state.dists = findDists(configs.data, props.defaultCity)
+        }
+        if (props.defaultPostalCode !== '') {
+          this.state.selectedPostalCode = props.defaultPostalCode
+        } else {
+          this.state.selectedPostalCode = findPostalCode(this.state.dists, props.defaultDist)
+        }
+        if (props.defaultCity === '' && props.defaultDist !== '') {
           console.warn('WARN, There are too many dist in the same name. You should pass default city as well. ')
         }
       }
@@ -81,7 +90,7 @@ export default function withSimpleAddress(cusConfigs) {
           selectedCity, selectedDist, selectedPostalCode,
         } = this.state
         const passThroughProps = _omit(this.props, ['selectedCity', 'selectedDist', 'selectedPostalCode', 'cities', 'dists',
-          'handleOnCityChange', 'handleOnDistChange', 'handleOnPostalCodeChange', 'defaultCity', 'defaultDist'])
+          'handleOnCityChange', 'handleOnDistChange', 'handleOnPostalCodeChange'])
         return (
           <WrappedComponent
             selectedCity={selectedCity}
