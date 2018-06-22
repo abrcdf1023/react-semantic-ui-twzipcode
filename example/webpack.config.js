@@ -43,7 +43,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		alias: {
-			'react-twzipcode': path.resolve(__dirname, '../src/index.js'),
+			'react-twzipcode': path.resolve(__dirname, '../dist/index.js'),
 		}
 	},
 	module: {
