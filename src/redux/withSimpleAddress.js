@@ -38,7 +38,7 @@ export default function withSimpleAddress(cusConfigs) {
           this.state.dists = findDists(configs.data, props.selectedCity)
         }
         if (props.selectedDist !== '' && props.selectedPostalCode === '') {
-          props.changePostalCode(findPostalCode(this.state.dists, props.selectedCity))
+          props.changePostalCode(findPostalCode(this.state.dists, props.selectedDist))
         }
         if (props.selectedCity === '' && props.selectedDist !== '') {
           console.warn('WARN, There are too many dist in the same name. You should pass default city as well. ')
