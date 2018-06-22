@@ -1,9 +1,8 @@
 import _map from 'lodash/map'
 import React from 'react'
-import {Form, Dropdown, Input } from 'semantic-ui-react'
-import withSimpleAddress from 'react-simple-address'
+import { Form, Dropdown, Input } from 'semantic-ui-react'
 
-const MySimpleAddres = ({
+const SimpleAddress = ({
   selectedCity,
   selectedDist,
   selectedPostalCode,
@@ -42,4 +41,4 @@ const MySimpleAddres = ({
   )
 }
 
-export default withSimpleAddress()(MySimpleAddres)
+export default SimpleAddress

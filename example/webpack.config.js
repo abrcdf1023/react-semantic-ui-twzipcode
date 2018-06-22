@@ -41,10 +41,7 @@ module.exports = {
 		publicPath: '/'
 	},
 	resolve: {
-		extensions: ['.js', '.jsx'],
-		alias: {
-			'react-simple-address': path.resolve(__dirname, '../src/index.js'),
-		}
+		extensions: ['.js', '.jsx']
 	},
 	module: {
 		rules: [{

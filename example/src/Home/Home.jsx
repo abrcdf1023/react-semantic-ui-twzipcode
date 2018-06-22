@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Header, Dropdown, Divider } from 'semantic-ui-react'
-import MySimpleAddres from './MySimpleAddres'
+import MySimpleAddress from './MySimpleAddress'
+import MyReduxSimpleAddress from '../containers/MyReduxSimpleAddress'
 
 import * as styles from './Home.scss'
 
@@ -10,13 +11,13 @@ export default class Home extends Component {
       <Container>
         <Header as="h1">react-simple-address</Header>
         <br />
-        <MySimpleAddres/>
+        <MySimpleAddress/>
         <br />
-        <MySimpleAddres defaultCity='臺北市'/>
+        <MySimpleAddress defaultCity='臺北市'/>
         <br />
-        <MySimpleAddres defaultCity='臺北市' defaultDist='中正區'/>
+        <MySimpleAddress defaultCity='臺北市' defaultDist='中正區'/>
         <br />
-        <MySimpleAddres defaultCity='臺北市' defaultDist='中正區' defaultPostalCode='10000'/>
+        <MySimpleAddress defaultCity='臺北市' defaultDist='中正區' defaultPostalCode='10000'/>
       </Container>
     )
   }
