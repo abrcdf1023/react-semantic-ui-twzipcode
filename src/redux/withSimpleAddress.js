@@ -8,7 +8,7 @@ import data from '../data'
 import {
   findDists,
   findPostalCode,
-} from './utils'
+} from '../utils'
 
 export default function withSimpleAddress(cusConfigs) {
   const defaultConfig = {
