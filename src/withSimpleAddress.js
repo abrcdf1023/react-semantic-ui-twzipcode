@@ -32,29 +32,51 @@ export default function withSimpleAddress(WrappedComponent) {
     }
 
     state = {
+      cities: _map(data, el => el.city),
+      dists: [],
       selectedCity: '',
       selectedDist: '',
+      selectedPostalCode: '',
     }
 
-    handleOnCityChange = value => this.setState({ selectedCity: value, selectedDist: '' })
+    handleOnCityChange = (value) => {
+      const { dists } = data[_findIndex(data, { city: value })]
+      this.setState({
+        selectedCity: value,
+        selectedDist: '',
+        selectedPostalCode: '',
+        dists,
+      })
+    }
 
-    handleOnDistChange = value => this.setState({ selectedDist: value })
+    handleOnDistChange = (value) => {
+      const { dists } = this.state
+      const { postalCode } = dists[_findIndex(dists, { name: value })]
+      this.setState({
+        selectedDist: value,
+        selectedPostalCode: postalCode,
+      })
+    }
+
+    handleOnPostalCodeChange = value => this.setState({ selectedPostalCode: value })
 
     render() {
-      const { selectedCity, selectedDist } = this.state
-      const cities = _map(data, el => el.city)
-      const distsIndex = _findIndex(data, { city: selectedCity })
-      const dists = distsIndex !== -1 ? data[distsIndex].dists : []
-      const passThroughProps = _omit(this.props, ['selectedCity', 'selectedDist', 'cities', 'dists',
-        'handleOnCityChange', 'handleOnDistChange', 'defaultCity', 'defaultDist'])
+      const {
+        cities, dists,
+        selectedCity, selectedDist, selectedPostalCode,
+      } = this.state
+      const passThroughProps = _omit(this.props, ['selectedCity', 'selectedDist', 'selectedPostalCode', 'cities', 'dists',
+        'handleOnCityChange', 'handleOnDistChange', 'handleOnPostalCodeChange', 'defaultCity', 'defaultDist'])
       return (
         <WrappedComponent
           selectedCity={selectedCity}
           selectedDist={selectedDist}
+          selectedPostalCode={selectedPostalCode}
           cities={cities}
           dists={dists}
           handleOnCityChange={this.handleOnCityChange}
           handleOnDistChange={this.handleOnDistChange}
+          handleOnPostalCodeChange={this.handleOnPostalCodeChange}
           {...passThroughProps}
         />
       )

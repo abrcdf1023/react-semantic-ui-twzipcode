@@ -43,7 +43,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		alias: {
-			'react-simple-address': path.resolve(__dirname, '../dist/index.js'),
+			'react-simple-address': path.resolve(__dirname, '../src/index.js'),
 		}
 	},
 	module: {
