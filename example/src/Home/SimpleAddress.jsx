@@ -8,15 +8,15 @@ const SimpleAddress = ({
   selectedPostalCode,
   cities,
   dists,
-  handleOnCityChange,
-  handleOnDistChange,
-  handleOnPostalCodeChange,
+  handleCityChange,
+  handleDistChange,
+  handlePostalCodeChange,
 }) => {
   return (
     <Form>
       <Dropdown
         selection
-        onChange={(e, { value }) => { handleOnCityChange(value) }}
+        onChange={(e, { value }) => { handleCityChange(value) }}
         value={selectedCity}
         placeholder="選擇縣市"
         options={_map(cities, city => ({
@@ -27,7 +27,7 @@ const SimpleAddress = ({
       />
       <Dropdown
         selection
-        onChange={(e, { value }) => { handleOnDistChange(value) }}
+        onChange={(e, { value }) => { handleDistChange(value) }}
         value={selectedDist}
         placeholder="選擇地區"
         options={_map(dists, dist => ({
@@ -36,7 +36,7 @@ const SimpleAddress = ({
           value: dist.name,
         }))}
       />
-      <Input value={selectedPostalCode} onChange={(e, { value }) => { handleOnPostalCodeChange(value) }}/>
+      <Input value={selectedPostalCode} onChange={(e, { value }) => { handlePostalCodeChange(value) }}/>
     </Form>
   )
 }

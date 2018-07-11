@@ -49,7 +49,7 @@ export default function withSimpleAddress(cusConfigs) {
         dists: [],
       }
 
-      handleOnCityChange = (value) => {
+      handleCityChange = (value) => {
         this.props.changeDist('')
         this.props.changePostalCode('')
         this.setState({
@@ -57,19 +57,19 @@ export default function withSimpleAddress(cusConfigs) {
         })
       }
 
-      handleOnDistChange = (value) => {
+      handleDistChange = (value) => {
         this.props.changePostalCode(findPostalCode(this.state.dists, value))
       }
 
       render() {
         const { cities, dists } = this.state
-        const passThroughProps = _omit(this.props, ['cities', 'dists', 'handleOnCityChange', 'handleOnDistChange'])
+        const passThroughProps = _omit(this.props, ['cities', 'dists', 'handleCityChange', 'handleDistChange'])
         return (
           <WrappedComponent
             cities={cities}
             dists={dists}
-            handleOnCityChange={this.handleOnCityChange}
-            handleOnDistChange={this.handleOnDistChange}
+            handleCityChange={this.handleCityChange}
+            handleDistChange={this.handleDistChange}
             {...passThroughProps}
           />
         )

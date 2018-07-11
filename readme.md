@@ -41,11 +41,11 @@ const MySimpleAddres = ({
   // use to render select dist options
   dists,
   // set new value while city change
-  handleOnCityChange,
+  handleCityChange,
   // set new value while dist change
-  handleOnDistChange,
+  handleDistChange,
   // set new value while postal code change
-  handleOnPostalCodeChange,
+  handlePostalCodeChange,
 }) => (
   ...
 )
@@ -56,7 +56,7 @@ Semantic-ui-react for example.
 ```javascript
   <Dropdown
     selection
-    onChange={(e, { value }) => { handleOnCityChange(value) }}
+    onChange={(e, { value }) => { handleCityChange(value) }}
     value={selectedCity}
     placeholder="選擇縣市"
     options={_map(cities, city => ({
@@ -67,7 +67,7 @@ Semantic-ui-react for example.
   />
   <Dropdown
     selection
-    onChange={(e, { value }) => { handleOnDistChange(value) }}
+    onChange={(e, { value }) => { handleDistChange(value) }}
     value={selectedDist}
     placeholder="選擇地區"
     options={_map(dists, dist => ({
@@ -78,7 +78,7 @@ Semantic-ui-react for example.
   />
   <Input
     value={selectedPostalCode}
-    onChange={(e, { value }) => { handleOnPostalCodeChange(value) }}
+    onChange={(e, { value }) => { handlePostalCodeChange(value) }}
   />
 ```
 
